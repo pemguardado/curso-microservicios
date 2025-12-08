@@ -7,7 +7,7 @@ on:
 env:
   SERVICE_NAME: addchild
   RESOURCE_GROUP: rg-microservicios
-  IMAGE_BASE_NAME: aminespinoza/addchild:latest
+  IMAGE_BASE_NAME: pemguardado/addchild:latest
   ENVIRONMENT_NAME: env-microservicios
 
 jobs:
