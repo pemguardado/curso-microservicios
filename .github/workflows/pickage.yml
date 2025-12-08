@@ -7,7 +7,7 @@ on:
 env:
   SERVICE_NAME: pickage
   RESOURCE_GROUP: rg-microservicios
-  IMAGE_BASE_NAME: aminespinoza/pickage:latest
+  IMAGE_BASE_NAME: pemguardado/pickage:latest
   ENVIRONMENT_NAME: env-microservicios
 
 jobs:
