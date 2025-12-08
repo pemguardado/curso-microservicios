@@ -7,7 +7,7 @@ on:
 env:
   SERVICE_NAME: addadult
   RESOURCE_GROUP: rg-microservicios
-  IMAGE_BASE_NAME: aminespinoza/addadult:latest
+  IMAGE_BASE_NAME: pemguardado/addadult:latest
   ENVIRONMENT_NAME: env-microservicios
 
 jobs:
