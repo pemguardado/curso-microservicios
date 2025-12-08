@@ -7,7 +7,7 @@ on:
 env:
   SERVICE_NAME: getadults
   RESOURCE_GROUP: rg-microservicios
-  IMAGE_BASE_NAME: aminespinoza/getadults:latest
+  IMAGE_BASE_NAME: pemguardado/getadults:latest
   ENVIRONMENT_NAME: env-microservicios
 
 jobs:
