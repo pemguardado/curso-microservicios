@@ -1,11 +1,11 @@
 name: Add Child deployment
 
-on:
+on: 
   push:
     branches: [ "main" ]
 
 env:
-  SERVICE_NAME: addchild
+  SERVICE_NAME:  addchild
   RESOURCE_GROUP: rg-microservicios
   IMAGE_BASE_NAME: pemguardado/addchild:latest
   ENVIRONMENT_NAME: env-microservicios
@@ -36,14 +36,24 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets. DOCKERHUB_TOKEN }}
 
       - name: Publish Docker NET image
         run: |
           docker push $IMAGE_BASE_NAME
 
+      - name: Debug Environment Variables
+        run: |
+          echo "SERVICE_NAME: $SERVICE_NAME"
+          echo "IMAGE_BASE_NAME: $IMAGE_BASE_NAME"
+          echo "RESOURCE_GROUP: $RESOURCE_GROUP"
+          echo "ENVIRONMENT_NAME: $ENVIRONMENT_NAME"
+          echo "Checking secrets (masked values):"
+          echo "SERVICEBUS_CONNECTION_STRING is set: ${{ secrets.SERVICE_BUS_CONNECTION_STRING != '' }}"
+          echo "SQL_CONNECTION_STRING is set: ${{ secrets.SQL_CONNECTION_STRING != '' }}"
+
       - name: Deploy Container App
         run: |
           az containerapp up --name $SERVICE_NAME --image $IMAGE_BASE_NAME \
           --resource-group $RESOURCE_GROUP --environment $ENVIRONMENT_NAME  \
-          --env-vars SERVICEBUS_CONNECTION_STRING="${{secrets.SERVICE_BUS_CONNECTION_STRING}}" SERVICE_BUS_TOPIC_NAME="childrentopic" SQL_CONNECTION_STRING="${{secrets.SQL_CONNECTION_STRING}}"
+          --env-vars SERVICEBUS_CONNECTION_STRING="${{ secrets.SERVICE_BUS_CONNECTION_STRING }}" SERVICE_BUS_TOPIC_NAME="childrentopic" SQL_CONNECTION_STRING="${{ secrets.SQL_CONNECTION_STRING }}"
