@@ -45,5 +45,5 @@ jobs:
       - name: Deploy Container App
         run: |
           az containerapp up --name $SERVICE_NAME --image $IMAGE_BASE_NAME \
-          --resource-group $RESOURCE_GROUP --environment $ENVIRONMENT_NAME  \
+          --resource-group $RESOURCE_GROUP --environment $ENVIRONMENT_NAME --ingress external  \
           --env-vars SQL_CONNECTION_STRING='${{secrets.SQL_CONNECTION_STRING}}'
