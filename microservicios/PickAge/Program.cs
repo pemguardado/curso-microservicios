@@ -8,7 +8,7 @@ IServiceCollection serviceDescriptors = new ServiceCollection();
 Host.CreateDefaultBuilder(args)
    .ConfigureHostConfiguration(configHost =>
    {
-       configHost.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
+       configHost.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
    })
    .ConfigureServices((hostContext, services) =>
    {
